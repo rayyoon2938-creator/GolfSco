@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GOLFSCO | Digital Golf Scorecards</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <div class="logo">⛳ GOLFSCO</div>
+
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#scorecard">Scorecard</a>
+            <a href="#history">History</a>
+
+            <button onclick="goToScorecard()">
+                New Round
+            </button>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <p class="eyebrow">THE DIGITAL GOLF SCORECARD</p>
+
+            <h1>
+                Your round.<br>
+                <span>Your numbers.</span><br>
+                Your game.
+            </h1>
+
+            <p class="description">
+                GOLFSCO makes tracking golf rounds simple.
+                Record every hole, save your rounds, and
+                keep your game organized.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-button" onclick="goToScorecard()">
+                    Start a Round →
+                </button>
+
+                <button class="secondary-button" onclick="goToHistory()">
+                    View History
+                </button>
+
+            </div>
+
+            <div class="stats">
+
+                <div>
+                    <strong>18</strong>
+                    <span>Holes</span>
+                </div>
+
+                <div>
+                    <strong>Live</strong>
+                    <span>Scoring</span>
+                </div>
+
+                <div>
+                    <strong>∞</strong>
+                    <span>Rounds</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREVIEW CARD -->
+        <div class="preview-card">
+
+            <div class="preview-header">
+
+                <div>
+                    <small>CURRENT ROUND</small>
+                    <h3>Valle del Sol</h3>
+                </div>
+
+                <span class="live">● LIVE</span>
+
+            </div>
+
+            <div class="preview-player">
+
+                <span>Ray Yoon</span>
+
+                <strong>+3</strong>
+
+            </div>
+
+            <div class="preview-scores">
+
+                <div>
+                    <small>OUT</small>
+                    <strong>42</strong>
+                </div>
+
+                <div>
+                    <small>IN</small>
+                    <strong>39</strong>
+                </div>
+
+                <div>
+                    <small>TOTAL</small>
+                    <strong>81</strong>
+                </div>
+
+            </div>
+
+            <div class="progress">
+                <div></div>
+            </div>
+
+            <small>Hole 14 of 18</small>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+
+        <p class="eyebrow">BUILT FOR GOLFERS</p>
+
+        <h2>
+            Everything you need<br>
+            to track your round.
+        </h2>
+
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">▦</div>
+
+                <h3>Digital Scorecard</h3>
+
+                <p>
+                    Enter scores hole-by-hole without
+                    carrying a paper scorecard around
+                    the course.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">↗</div>
+
+                <h3>Live Totals</h3>
+
+                <p>
+                    Your total score and score relative
+                    to par update automatically.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">♛</div>
+
+                <h3>Round History</h3>
+
+                <p>
+                    Save multiple rounds and look back
+                    at your previous scores.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCORECARD -->
+    <section id="scorecard" class="scorecard-section">
+
+        <div class="scorecard-title">
+
+            <div>
+
+                <p class="eyebrow">NEW ROUND</p>
+
+                <h2>Golf Scorecard</h2>
+
+                <p>Enter the information for your round.</p>
+
+            </div>
+
+            <button class="reset-button" onclick="resetRound()">
+                Clear
+            </button>
+
+        </div>
+
+
+        <!-- ROUND INFORMATION -->
+
+        <div class="round-info">
+
+            <div>
+                <label for="playerName">PLAYER</label>
+
+                <input
+                    type="text"
+                    id="playerName"
+                    placeholder="Your name"
+                >
+            </div>
+
+
+            <div class="course-display">
+
+                <label>COURSE</label>
+
+                <strong>Valle del Sol</strong>
+
+                <span>Santa Ana, Costa Rica</span>
+
+            </div>
+
+
+            <div>
+                <label for="roundDate">DATE</label>
+
+                <input
+                    type="date"
+                    id="roundDate"
+                >
+            </div>
+
+        </div>
+
+        <!-- SCORECARD TABLE -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>HOLE</th>
+                        <th>NAME</th>
+                        <th>PAR</th>
+                        <th>HCP</th>
+                        <th>YARDS</th>
+                        <th>PLAYER</th>
+                        <th>TO PAR</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="scoreRows"></tbody>
+
+                <tfoot>
+
+                    <tr>
+
+                        <th>TOTAL</th>
+
+                        <th>72</th>
+
+                        <th></th>
+
+                        <th></th>
+
+                        <th>6945</th>
+
+                        <th id="totalScore">
+                            0
+                        </th>
+
+                        <th id="totalPar">
+                            0
+                        </th>
+
+                    </tr>
+
+                </tfoot>
+
+            </table>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="summary">
+
+            <div>
+                <span>FRONT 9</span>
+                <strong id="frontNine">0</strong>
+            </div>
+
+            <div>
+                <span>BACK 9</span>
+                <strong id="backNine">0</strong>
+            </div>
+
+            <div>
+                <span>TOTAL</span>
+                <strong id="summaryTotal">0</strong>
+            </div>
+
+            <div>
+                <span>TO PAR</span>
+                <strong id="summaryPar">0</strong>
+            </div>
+
+        </div>
+
+
+        <button
+            class="save-button"
+            onclick="saveRound()"
+        >
+            Save Round →
+        </button>
+
+        <p id="saveMessage" class="save-message"></p>
+
+    </section>
+
+
+    <!-- ROUND HISTORY -->
+
+    <section id="history" class="history-section">
+
+        <p class="eyebrow">YOUR ROUNDS</p>
+
+        <h2>Round History</h2>
+
+        <p class="history-description">
+            Your saved rounds are stored on this device.
+        </p>
+
+
+        <div id="roundHistory" class="round-history">
+
+            <!-- Saved rounds appear here -->
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <p class="eyebrow">GOLFSCO</p>
+
+        <h2>
+            Golf scoring,<br>
+            without the paper.
+        </h2>
+
+        <p>
+            A simple idea with room to grow into
+            a complete golf platform.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="goToScorecard()"
+        >
+            Create Your Round →
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="logo">⛳ GOLFSCO</div>
+
+        <p>
+            Digital Golf Scorecards · Prototype
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
